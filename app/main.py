@@ -5,7 +5,7 @@ from steputil import StepArgs, StepArgsBuilder
 def main(step: StepArgs):
     # Initialize GCS client
     print(f"Uploading file to gs://{step.config.bucket}/{step.config.path}")
-    storage_client = storage.Client(project=step.config.get("project"))
+    storage_client = storage.Client(project=step.config.project)
     bucket = storage_client.bucket(step.config.bucket)
     blob = bucket.blob(step.config.path)
 
