@@ -20,7 +20,7 @@ def main(step: StepArgs):
 if __name__ == "__main__":
     main(StepArgsBuilder()
          .input()
-         .config("project", required=False)
+         .config("project")
          .config("bucket")
          .config("path")
          .build()
