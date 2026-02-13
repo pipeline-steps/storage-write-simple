@@ -25,12 +25,14 @@ docker run pipelining/storage-write-simple:latest
 
 ## Parameters
 
-| Name   | Required | Description                                      |
-|--------|----------|--------------------------------------------------|
-| bucket | X        | Name of the GCS bucket                           |
-| path   | X        | Path (including filename) within the bucket      |
+| Name    | Required | Description                                      |
+|---------|----------|--------------------------------------------------|
+| project |          | GCP project ID (optional, defaults to environment settings) |
+| bucket  | X        | Name of the GCS bucket                           |
+| path    | X        | Path (including filename) within the bucket      |
 
 **Notes:**
+  * project: (Optional) GCP project ID. If not specified, defaults to the project from your environment or service account
   * bucket: The GCS bucket where the file will be uploaded
   * path: The full path including filename where the file will be stored in the bucket (e.g., `folder/subfolder/file.txt`)
   * The service account needs to have `storage.objects.create` permission on the bucket
@@ -40,6 +42,15 @@ docker run pipelining/storage-write-simple:latest
 Config file (`config.json`):
 ```json
 {
+  "bucket": "my-bucket",
+  "path": "data/output/results.json"
+}
+```
+
+Or with explicit project:
+```json
+{
+  "project": "my-gcp-project",
   "bucket": "my-bucket",
   "path": "data/output/results.json"
 }
