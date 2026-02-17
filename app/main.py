@@ -10,7 +10,7 @@ def main(step: StepArgs):
     blob = bucket.blob(step.config.path)
 
     # Upload file from input
-    input_file = step.input.getPath()
+    input_file = step.input.path
     blob.upload_from_filename(input_file)
 
     print(f"Successfully uploaded {input_file} to gs://{step.config.bucket}/{step.config.path}")
